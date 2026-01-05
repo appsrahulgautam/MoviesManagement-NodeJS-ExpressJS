@@ -27,12 +27,6 @@ const server = app.listen(PORT, () => {
   console.log("Server running perfectly on PORT 5001");
 });
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({
-    success: true,
-    message: "You have successfully connected to get request",
-  });
-});
 
 //
 //
