@@ -197,6 +197,6 @@ It powers **secure user authentication**, **movie management**, and a **personal
 
 ### ⭐ Star this repository if you like clean backend engineering
 
-**Built for scale · Designed for production · Crafted with ❤️**
+**Built for scale · Designed for production · Crafted with ❤️ by Rahul Gautam**
 
 </div>
