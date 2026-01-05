@@ -9,7 +9,7 @@ config();
 connectDB(); // * <— prisma
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT;
 
 //* body parsing middlewares
 app.use(express.json());
@@ -27,7 +27,7 @@ app.use("/watchlist", router);
 //*
 
 const server = app.listen(PORT, () => {
-  console.log("Server running perfectly on PORT 5001");
+  console.log("Server running perfectly on " + PORT);
 });
 
 //
