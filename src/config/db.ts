@@ -1,9 +1,17 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
+import "dotenv/config";
 
-//* here we are telling prisma to give logs based on enviornment
+const connectionString = `${process.env.DATABASE_URL}`;
+
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+
 const prisma = new PrismaClient({
+  adapter: adapter, // This satisfies the 'never' type issue
   log:
-    process.env.NODE_ENV == "development"
+    process.env.NODE_ENV === "development"
       ? ["query", "error", "warn"]
       : ["error"],
 });

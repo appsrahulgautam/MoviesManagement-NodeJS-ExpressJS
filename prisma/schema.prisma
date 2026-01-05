@@ -6,8 +6,55 @@ datasource db {
   provider = "postgresql"
 }
 
-
+//create a table schema 
 model User {
   id String @id @default(uuid())
-  
+  email String @unique
+  name String 
+  password String 
+  createdAt DateTime @default(now())
+  //* back-reference [req] for letting WatchlistItem link to user
+   // Relations
+  movies   Movie[]  @relation("MovieCreator")
+  watchlistItems WatchlistItem[]
 }
+
+model Movie {
+  id String @id @default(uuid())
+  title String 
+  overview String?
+  releaseYear Int 
+  genres String[] @default([])
+  runtime Int? 
+  posterUrl String? 
+  createdBy String
+  createdAt DateTime @default(now())
+
+  creator User  @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+  watchlistItems WatchlistItem[]
+}
+
+//* enums dont have commas, and ""
+enum enumStatusOptions{
+  PLANNED
+  WATCHING
+  COMPLETED
+  DROPPED
+}
+
+model WatchlistItem{
+  id String @id @default(uuid())
+  userId String
+  movieId String
+  status enumStatusOptions @default(PLANNED)
+  rating Int? 
+  notes String? 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt //*< --- here we are automatically updating it everytime 
+  //* relations ()
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId])
+}
+

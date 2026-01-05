@@ -10,6 +10,10 @@ connectDB(); // * <— prisma
 const app = express();
 const PORT = 5001;
 
+//* body parsing middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //*
 ///* ---------    API ROUTES HERE
 //
@@ -36,6 +40,8 @@ app.get("/", (req: Request, res: Response) => {
 //* keep these all the time to do so
 //* Handle unhandled promise rejections
 // * (e.g., database connection errors)
+
+//! unhandledRejection
 process.on("unhandledRejection", (err) => {
   console.error("Unhandled Rejection:", err);
   server.close(async () => {
@@ -44,14 +50,14 @@ process.on("unhandledRejection", (err) => {
   });
 });
 
-// Handle uncaught exceptions
+//! Handle uncaught exceptions
 process.on("uncaughtException", async (err) => {
   console.error("Uncaught Exception:", err);
   await disconnectDB();
   process.exit(1);
 });
 
-// Graceful shutdown
+//! Graceful shutdown
 process.on("SIGTERM", async () => {
   console.log("SIGTERM received, shutting down gracefully");
   server.close(async () => {

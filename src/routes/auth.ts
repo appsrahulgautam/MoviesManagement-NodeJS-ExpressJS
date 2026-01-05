@@ -1,17 +1,8 @@
 import express from "express";
+import { registerController } from "../controllers/authController";
 
 const auth = express.Router();
 
-auth.get("/", (req, res) => {
-  res.json({
-    message: "You are in auth router in default path / ",
-  });
-});
-
-auth.put("/update", (req, res) => {
-  res.json({
-    message: "You are in auth rourer with update path put",
-  });
-});
+auth.post("/register", registerController);
 
 export default auth;
