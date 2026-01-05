@@ -1,33 +1,6 @@
 <div align="center">
 
 
-<p align="center">
-  <svg width="100%" height="200" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="grad1" gradientTransform="rotate(90)">
-        <stop offset="0%" stop-color="#0f2027">
-          <animate attributeName="stop-color" values="#0f2027;#203a43;#2c5364;#0f2027" dur="6s" repeatCount="indefinite"/>
-        </stop>
-        <stop offset="100%" stop-color="#2c5364">
-          <animate attributeName="stop-color" values="#2c5364;#0f2027;#203a43;#2c5364" dur="6s" repeatCount="indefinite"/>
-        </stop>
-      </linearGradient>
-    </defs>
-
-    <path fill="url(#grad1)">
-      <animate attributeName="d" dur="6s" repeatCount="indefinite"
-        values="
-        M0,160 C240,240 480,80 720,120 960,160 1200,240 1440,160 L1440,0 L0,0 Z;
-        M0,120 C240,80 480,200 720,160 960,120 1200,80 1440,120 L1440,0 L0,0 Z;
-        M0,160 C240,240 480,80 720,120 960,160 1200,240 1440,160 L1440,0 L0,0 Z
-        " />
-    </path>
-
-  </svg>
-</p>
-
-
-
 # 🎬 Movie Management Backend API
 
 ### **A Secure, Scalable & Production-Ready RESTful Backend**
