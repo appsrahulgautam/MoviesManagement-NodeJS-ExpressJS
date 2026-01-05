@@ -1,3 +1,6 @@
+<div align="center">
+
+
 <p align="center">
   <svg width="100%" height="200" viewBox="0 0 1440 320" preserveAspectRatio="none">
     <defs>
@@ -23,7 +26,7 @@
   </svg>
 </p>
 
-<div align="center">
+
 
 # 🎬 Movie Management Backend API
 
