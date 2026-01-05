@@ -3,6 +3,7 @@ import movies from "./routes/movies";
 import auth from "./routes/auth";
 import { config } from "dotenv";
 import { connectDB, disconnectDB } from "./config/db";
+import router from "./routes/watchlistRoutes";
 
 config();
 connectDB(); // * <— prisma
@@ -19,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 //
 app.use("/movies", movies);
 app.use("/auth", auth);
+app.use("/watchlist", router);
+
 //
 ///* ---------    API ROUTES HERE
 //*
@@ -26,7 +29,6 @@ app.use("/auth", auth);
 const server = app.listen(PORT, () => {
   console.log("Server running perfectly on PORT 5001");
 });
-
 
 //
 //
